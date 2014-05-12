@@ -29,7 +29,7 @@ class WorkflowBehavior extends CActiveRecordBehavior
     public function beforeValidate($event)
     {
         parent::beforeValidate($event);
-        if ($this->owner->hasAttribute($this->statusAttribute) && empty($this->owner->{$this->statusAttribute})) {
+        if ($this->owner->hasAttribute($this->statusAttribute) && !isset($this->owner->{$this->statusAttribute})) {
             $this->owner->{$this->statusAttribute} = $this->defaultStatus;
         }
     }
